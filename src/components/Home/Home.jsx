@@ -53,7 +53,9 @@ const Home = () => {
           >
             <img src={p.image} alt='pokemonball' className='w-[200px]' />
             <p
-              className={`mt-3 text-${p.color}-500 font-mono text-xl capitalize`}
+              className={`mt-3 ${
+                'text-' + p.color + '-500'
+              } font-mono text-xl capitalize`}
             >
               The {p.name}
             </p>
