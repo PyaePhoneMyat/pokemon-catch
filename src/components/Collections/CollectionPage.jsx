@@ -39,7 +39,7 @@ const CollectionPage = () => {
           <img src={Professor} alt='professor' width={200} />
         </div>
         <div className='p-5 w-[500px] bg-white rounded-lg'>
-          {box.length > 0 ? (
+          {box.length === 0 ? (
             <p className='text-2xl font-bold font-mono text-center'>
               There is no pokemons!
             </p>
