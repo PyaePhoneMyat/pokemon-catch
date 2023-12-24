@@ -1,11 +1,21 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Pokemonball from '../../assets/pokemonball.png';
 import Arrowsign from '../../assets/sign.jpg';
-// import Pokemon from '../../assets/scyther.png';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAppStore } from '../Store/useAppStore';
 
+const BG_COLORS = {
+  forest: 'bg-green-500',
+  beach: 'bg-blue-500',
+  volcano: 'bg-red-500',
+};
+
+const PKMN_TYPES = {
+  forest: 'grass',
+  beach: 'water',
+  volcano: 'fire',
+};
 const ExplorePage = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -14,7 +24,6 @@ const ExplorePage = () => {
     navigate('/collections');
   };
 
-  const [isFindMore, setIsFindMore] = useState(false);
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -29,9 +38,7 @@ const ExplorePage = () => {
       setIsLoading(true);
       try {
         const { data } = await axios.get(
-          `http://localhost:1337/api/pokemons?filters[type]=${
-            id === 'forest' ? 'grass' : id === 'beach' ? 'water' : 'fire'
-          }`
+          `http://localhost:1337/api/pokemons?filters[type]=${PKMN_TYPES[id]}`
         );
         setData(data.data);
       } catch (error) {
@@ -45,9 +52,7 @@ const ExplorePage = () => {
 
   useEffect(() => {
     setCurrentPokemon(getRandomPokemon());
-
-    return () => setIsFindMore(false);
-  }, [data, isFindMore]);
+  }, [data]);
 
   const { box, addToBox } = useAppStore();
   console.log('In the box', box);
@@ -60,15 +65,7 @@ const ExplorePage = () => {
     });
   };
   return (
-    <div
-      className={`h-screen p-6 ${
-        id === 'forest'
-          ? 'bg-green-500'
-          : id === 'beach'
-          ? 'bg-blue-500'
-          : 'bg-red-500'
-      }`}
-    >
+    <div className={`h-screen p-6 ${BG_COLORS[id]}`}>
       <div className='flex justify-between'>
         <Link
           to='/'
@@ -123,8 +120,7 @@ const ExplorePage = () => {
         <button
           className='button font-mono font-bold hover:bg-pink-300 transition-all duration-300 bg-red-200 border-white rounded-full px-8 py-5 text-2xl'
           onClick={() => {
-            setIsFindMore(true);
-            getRandomPokemon();
+            setCurrentPokemon(getRandomPokemon());
           }}
         >
           Find More

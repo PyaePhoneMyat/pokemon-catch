@@ -3,27 +3,19 @@ import { FaSearch } from 'react-icons/fa';
 import { ImCross } from 'react-icons/im';
 import { Tooltip } from 'react-tooltip';
 
-const SearchBar = ({ data, onSearch }) => {
+const SearchBar = ({ onSearch, onClear }) => {
   const [inputValue, setInputValue] = useState('');
 
   const [selectedType, setSelectedType] = useState('');
 
   const handleSearch = () => {
-    const filteredData = data.filter((pokemon) => {
-      const nameMatches = pokemon.name
-        .toLowerCase()
-        .includes(inputValue.toLowerCase());
-      const typeMatches = selectedType === '' || pokemon.type === selectedType;
-      return nameMatches && typeMatches;
-    });
-
-    onSearch(filteredData);
+    onSearch(inputValue, selectedType);
   };
 
   const handleClear = () => {
     setInputValue('');
     setSelectedType('');
-    onSearch(data);
+    onClear();
   };
 
   return (

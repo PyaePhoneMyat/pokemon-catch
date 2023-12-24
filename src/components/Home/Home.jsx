@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router';
 import Pokemonball from '../../assets/pokemonball.png';
 import Forest from '../../assets/forest.png';
 import Beach from '../../assets/beach.png';
@@ -9,25 +8,21 @@ const places = [
   {
     image: Forest,
     name: 'forest',
-    color: 'green',
+    color: 'text-green-500',
   },
   {
     image: Beach,
     name: 'beach',
-    color: 'blue',
+    color: 'text-blue-500',
   },
   {
     image: Volcano,
     name: 'volcano',
-    color: 'red',
+    color: 'text-red-500',
   },
 ];
 
 const Home = () => {
-  const navigate = useNavigate();
-  const goToExplore = (id) => {
-    navigate(`explore/${id}`);
-  };
   return (
     <div className='md:container md:mx-auto mt-5'>
       <div className='flex justify-between'>
@@ -46,20 +41,17 @@ const Home = () => {
       </div>
       <div className='flex justify-between items-center mt-[100px] gap-2 '>
         {places.map((p) => (
-          <div
-            key={p.name}
-            className='h-[400px] w-[300px] flex justify-center items-center flex-col p-2 text-center border-gray-200 border-8 rounded-2xl cursor-pointer hover:scale-110 transition-all'
-            onClick={() => goToExplore(p.name)}
-          >
-            <img src={p.image} alt='pokemonball' className='w-[200px]' />
-            <p
-              className={`mt-3 ${
-                'text-' + p.color + '-500'
-              } font-mono text-xl capitalize`}
+          <Link key={p.name} to={`explore/${p.name}`}>
+            <div
+              key={p.name}
+              className='h-[400px] w-[300px] flex justify-center items-center flex-col p-2 text-center border-gray-200 border-8 rounded-2xl cursor-pointer hover:scale-110 transition-all'
             >
-              The {p.name}
-            </p>
-          </div>
+              <img src={p.image} alt='pokemonball' className='w-[200px]' />
+              <p className={`mt-3 ${p.color} font-mono text-xl capitalize`}>
+                The {p.name}
+              </p>
+            </div>
+          </Link>
         ))}
       </div>
     </div>

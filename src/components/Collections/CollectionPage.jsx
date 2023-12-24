@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import Pokemonball from '../../assets/pokemonball.png';
 import Professor from '../../assets/professor.png';
-
 import SearchBar from './SearchBar';
 import { useAppStore } from '../Store/useAppStore';
 import { useState } from 'react';
@@ -11,9 +10,19 @@ const CollectionPage = () => {
   console.log('box', box);
 
   const [filteredData, setFilterData] = useState(box);
-  const handleSearch = (filteredData) => {
+  const handleSearch = (inputValue, selectedType) => {
+    const filteredData = box.filter((pokemon) => {
+      const nameMatches = pokemon.name
+        .toLowerCase()
+        .includes(inputValue.toLowerCase());
+      const typeMatches = selectedType === '' || pokemon.type === selectedType;
+      return nameMatches && typeMatches;
+    });
+
     setFilterData(filteredData);
   };
+
+  const handleClear = () => setFilterData(box);
 
   return (
     <div className='h-screen p-6  bg-pink-100'>
@@ -35,7 +44,7 @@ const CollectionPage = () => {
       </div>
       <div className='flex justify-around items-center'>
         <div>
-          <SearchBar data={box} onSearch={handleSearch} />
+          <SearchBar onSearch={handleSearch} onClear={handleClear} />
           <img src={Professor} alt='professor' width={200} />
         </div>
         <div className='p-5 w-[500px] bg-white rounded-lg'>
