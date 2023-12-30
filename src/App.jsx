@@ -1,7 +1,7 @@
 import './App.css';
-import CollectionPage from './components/collections/CollectionPage';
-import ExplorePage from './components/explore/ExplorePage';
-import Home from './components/home/Home';
+import CollectionPage from './components/Collections/CollectionPage';
+import ExplorePage from './components/Explore/ExplorePage';
+import Home from './components/Home/Home';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
