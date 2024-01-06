@@ -38,7 +38,7 @@ const ExplorePage = () => {
       setIsLoading(true);
       try {
         const { data } = await axios.get(
-          `http://localhost:1337/api/pokemons?filters[type]=${PKMN_TYPES[id]}`
+          `https://pokemon-catch-backend.onrender.com/api/pokemons?filters[type]=${PKMN_TYPES[id]}`
         );
         setData(data.data);
       } catch (error) {
