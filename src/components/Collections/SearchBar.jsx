@@ -50,7 +50,7 @@ const SearchBar = ({ onSearch, onClear }) => {
           Type :
         </label>
         <select
-          className='px-4 py-3 mx-3 bg-white-200 rounded-lg w-[300px]'
+          className='px-4 py-3 mx-3 bg-white-200 rounded-lg sm:w-[300px] w-[100px]'
           value={selectedType}
           onChange={(e) => setSelectedType(e.target.value)}
         >

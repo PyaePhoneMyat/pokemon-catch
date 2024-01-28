@@ -31,23 +31,28 @@ const CollectionPage = () => {
           to='/'
           className='flex button bg-white border-white rounded-full overflow-hidden px-2'
         >
-          <p className='text-lg underline font-bold font-mono text-black self-center'>
+          <p className='ss:text-lg text-sm underline font-bold font-mono text-black self-center'>
             &lt;Back To Home
           </p>
         </Link>
         <div className='flex bg-white border-white rounded-full px-2'>
-          <img src={Pokemonball} alt='pokemonball' width={60} />
-          <p className='text-lg underline font-bold font-mono text-black self-center'>
+          <img src={Pokemonball} alt='pokemonball' width={30} />
+          <p className='ss:text-lg text-sm underline font-bold font-mono text-black self-center'>
             My Collections
           </p>
         </div>
       </div>
-      <div className='flex justify-around items-center'>
+      <div className='flex sm:flex-row flex-col justify-around items-center'>
         <div>
           <SearchBar onSearch={handleSearch} onClear={handleClear} />
-          <img src={Professor} alt='professor' width={200} />
+          <img
+            src={Professor}
+            alt='professor'
+            width={200}
+            className='sm:m-1 sm:block m-auto hidden'
+          />
         </div>
-        <div className='p-5 w-[500px] bg-white rounded-lg'>
+        <div className='p-5 ss:w-[500px] ss:mt-0 mt-4 w-[350px] bg-white rounded-lg'>
           {box.length === 0 ? (
             <p className='text-2xl font-bold font-mono text-center'>
               There is no pokemons!

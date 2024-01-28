@@ -71,22 +71,22 @@ const ExplorePage = () => {
           to='/'
           className='flex button bg-white border-white rounded-full overflow-hidden px-2'
         >
-          <p className='text-lg underline font-bold font-mono text-black self-center'>
+          <p className='ss:text-lg text-sm underline font-bold font-mono text-black self-center'>
             &lt;Change Area
           </p>
           <img
             src={Arrowsign}
             alt='pokemonball'
-            width={50}
+            width={30}
             className='bg-no-repeat'
           />
         </Link>
         <div
           onClick={goToCollection}
-          className='flex button bg-white border-white rounded-full px-2 cursor-pointer'
+          className='flex button bg-white border-white rounded-full px-2 cursor-pointer gap-2'
         >
-          <img src={Pokemonball} alt='pokemonball' width={60} />
-          <p className='text-lg underline font-bold font-mono text-black self-center'>
+          <img src={Pokemonball} alt='pokemonball' width={30} />
+          <p className='ss:text-lg text-sm underline font-bold font-mono text-black self-center'>
             My Collections &gt;
           </p>
         </div>
@@ -100,7 +100,7 @@ const ExplorePage = () => {
             alt={currentPokemon?.attributes?.name}
             className='w-[300px] '
           />
-          <p className='text-[50px] text-white font-mono text-center'>
+          <p className='ss:text-[50px] text-[25px] text-white font-mono text-center'>
             A wild{' '}
             <span className='font-extrabold'>
               {currentPokemon?.attributes?.name}
@@ -112,13 +112,13 @@ const ExplorePage = () => {
 
       <div className='flex justify-center mt-5'>
         <button
-          className='button font-mono font-bold hover:bg-green-600 transition-all duration-300 bg-green-200 border-white rounded-full px-8 py-5 text-2xl mr-11'
+          className='button font-mono font-bold hover:bg-green-600 transition-all duration-300 bg-green-200 border-white rounded-full xs:px-8 px-5 xs:py-5 py-3  ss:text-2xl text-lg mr-11'
           onClick={catchPokemon}
         >
           Catch It!
         </button>
         <button
-          className='button font-mono font-bold hover:bg-pink-300 transition-all duration-300 bg-red-200 border-white rounded-full px-8 py-5 text-2xl'
+          className='button font-mono font-bold hover:bg-pink-300 transition-all duration-300 bg-red-200 border-white rounded-full xs:px-8 px-5 xs:py-5 py-3 ss:text-2xl text-lg'
           onClick={() => {
             setCurrentPokemon(getRandomPokemon());
           }}

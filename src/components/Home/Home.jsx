@@ -24,27 +24,26 @@ const places = [
 
 const Home = () => {
   return (
-    <div className='md:container md:mx-auto mt-5'>
-      <div className='flex justify-between'>
-        <div className='text-2xl font-bold font-mono text-red-400 self-center'>
+    <div className='sm:container sm:mx-auto mt-5'>
+      <div className='sm:flex justify-between text-center'>
+        <div className='md:text-2xl text-xl font-bold font-mono text-red-400 self-center'>
           <h2>Choose an area to explore...</h2>
         </div>
-        <Link
-          to='collections'
-          className='flex button bg-white border-white rounded-full px-2'
-        >
-          <img src={Pokemonball} alt='pokemonball' width={60} />
-          <p className='text-lg underline font-bold font-mono text-black self-center'>
-            My Collections &gt;
-          </p>
+        <Link to='collections'>
+          <div className='flex justify-center cursor-pointer bg-white border-white rounded-full px-2 sm:mt-0 mt-4'>
+            <img src={Pokemonball} alt='pokemonball' width={30} />
+            <p className='md:text-lg text-sm underline font-bold font-mono text-black self-center'>
+              My Collections &gt;
+            </p>
+          </div>
         </Link>
       </div>
-      <div className='flex justify-between items-center mt-[100px] gap-2 '>
+      <div className='flex md:flex-row flex-col justify-between items-center md:mt-[100px] mt-[30px] md:gap-2 gap-4 '>
         {places.map((p) => (
           <Link key={p.name} to={`explore/${p.name}`}>
             <div
               key={p.name}
-              className='h-[400px] w-[300px] flex justify-center items-center flex-col p-2 text-center border-gray-200 border-8 rounded-2xl cursor-pointer hover:scale-110 transition-all'
+              className='md:h-[400px] h-[250px] md:w-[300px] w-[200px] flex justify-center items-center flex-col p-2 text-center border-gray-200 border-8 rounded-2xl cursor-pointer hover:scale-110 transition-all'
             >
               <img src={p.image} alt='pokemonball' className='w-[200px]' />
               <p className={`mt-3 ${p.color} font-mono text-xl capitalize`}>
